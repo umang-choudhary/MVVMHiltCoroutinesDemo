@@ -6,7 +6,7 @@ import retrofit2.Response
 import javax.inject.Inject
 
 class NetworkRepository @Inject constructor(
-    val topHeadlinesApi: TopHeadlinesApi
+    private val topHeadlinesApi: TopHeadlinesApi
 ) {
 
     suspend fun getTopHeadlines(country: String, apiKey: String): Response<NewResponse> {

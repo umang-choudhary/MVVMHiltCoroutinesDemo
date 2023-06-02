@@ -24,7 +24,6 @@ class NewsAdapter @Inject constructor() : RecyclerView.Adapter<NewsAdapter.ViewH
         override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean {
             return oldItem == newItem
         }
-
     }
 
     val differ = AsyncListDiffer(this, diffUtil)
@@ -43,7 +42,6 @@ class NewsAdapter @Inject constructor() : RecyclerView.Adapter<NewsAdapter.ViewH
             tvDescription.text = article.description
             tvSource.text = article.author
             tvPublished.text = article.publishedAt
-
         }
 
         holder.itemView.setOnClickListener {
@@ -58,9 +56,9 @@ class NewsAdapter @Inject constructor() : RecyclerView.Adapter<NewsAdapter.ViewH
         return differ.currentList.size
     }
 
-    private var setArticleClickListener : ((article: Article)->Unit)? =null
+    private var setArticleClickListener: ((article: Article) -> Unit)? = null
 
-    fun onArticleClicked(listener:(Article)->Unit){
-        setArticleClickListener =listener
+    fun onArticleClicked(listener: (Article) -> Unit) {
+        setArticleClickListener = listener
     }
 }

@@ -30,7 +30,7 @@ class OnlineFragment : Fragment(R.layout.fragment_online) {
         binding = FragmentOnlineBinding.bind(view)
         init()
 
-        viewModel.topHeadlines.observe(viewLifecycleOwner, { dataHandler ->
+        viewModel.topHeadlines.observe(viewLifecycleOwner) { dataHandler ->
             when (dataHandler) {
                 is DataHandler.SUCCESS -> {
                     binding.progressBar.visibility = View.GONE
@@ -47,17 +47,15 @@ class OnlineFragment : Fragment(R.layout.fragment_online) {
                 }
             }
 
-        })
+        }
         viewModel.getTopHeadlines()
 
     }
 
     private fun init() {
-
         newsAdapter.onArticleClicked {
             val bundle = Bundle().apply {
                 putParcelable("article_data", it)
-
             }
             findNavController().navigate(
                 R.id.action_onlineFragment_to_articleDetailsFragment,

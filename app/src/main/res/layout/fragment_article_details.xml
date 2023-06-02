@@ -14,8 +14,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-
     </WebView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -32,7 +30,8 @@
         app:tint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/stat_sys_download_done" />
+        app:srcCompat="@android:drawable/stat_sys_download_done"
+        android:focusable="true" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
