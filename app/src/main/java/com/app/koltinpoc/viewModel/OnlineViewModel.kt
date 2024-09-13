@@ -10,6 +10,7 @@ import com.app.koltinpoc.utils.Constants.API_KEY
 import com.app.koltinpoc.utils.Constants.COUNTRY_CODE
 import com.app.koltinpoc.utils.DataHandler
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import javax.inject.Inject
@@ -22,8 +23,10 @@ import javax.inject.Inject
 
     fun getTopHeadlines() {
         _topHeadlines.postValue(DataHandler.LOADING())
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             val response = networkRepository.getTopHeadlines(COUNTRY_CODE, API_KEY)
+
+             // postValue - Background Thread, setValue - Main Thread
             _topHeadlines.postValue(handleResponse(response))
         }
     }

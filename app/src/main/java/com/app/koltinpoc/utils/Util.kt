@@ -21,6 +21,6 @@ fun ImageView.loadImageFromGlide(url: String?) {
 
 }
 
-fun Fragment.LogData(message:String){
+fun Fragment.logData(message:String){
     Log.d(this.javaClass.simpleName, "Log -->: "+ message)
 }

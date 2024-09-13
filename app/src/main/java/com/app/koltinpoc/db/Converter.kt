@@ -7,7 +7,7 @@ import com.google.gson.reflect.TypeToken
 
 class Converter {
 
-    val gson = Gson()
+    private val gson = Gson()
 
     @TypeConverter
     fun toSourceEntityToString(sourceEntity: SourceEntity): String {

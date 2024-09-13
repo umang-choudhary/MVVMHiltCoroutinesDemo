@@ -8,6 +8,7 @@ import com.app.koltinpoc.di.Transformer
 import com.app.koltinpoc.model.Article
 import com.app.koltinpoc.utils.DataHandler
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -30,21 +31,16 @@ class OfflineViewModel @Inject constructor(private val dbRepository: DBRepositor
         }
     }
 
-
     fun insertArticle(article: Article) {
-        viewModelScope.launch {
-
+        viewModelScope.launch(Dispatchers.IO) {
             dbRepository.insertArticle(article)
         }
     }
 
     fun deleteArticle(article: Article) {
-        viewModelScope.launch {
-
+        viewModelScope.launch(Dispatchers.IO) {
             dbRepository.delete(article)
         }
     }
-
-    fun getAllArticles() = dbRepository.getAllArticles()
 
 }

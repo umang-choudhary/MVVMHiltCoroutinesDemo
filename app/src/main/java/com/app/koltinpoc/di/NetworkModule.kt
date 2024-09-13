@@ -1,6 +1,5 @@
 package com.app.koltinpoc.di
 
-import android.app.Application
 import com.app.koltinpoc.api.TopHeadlinesApi
 import com.app.koltinpoc.utils.Constants.BASE_URL
 import dagger.Module
@@ -35,6 +34,5 @@ object NetworkModule {
     fun providesTopHeadlinesApi(retrofit: Retrofit): TopHeadlinesApi {
         return retrofit.create(TopHeadlinesApi::class.java)
     }
-
 
 }

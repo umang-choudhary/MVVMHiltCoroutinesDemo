@@ -4,12 +4,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.koltinpoc.R
 import com.app.koltinpoc.databinding.FragmentOfflineBinding
 import com.app.koltinpoc.utils.DataHandler
-import com.app.koltinpoc.utils.LogData
+import com.app.koltinpoc.utils.logData
 import com.app.koltinpoc.view.adapter.NewsAdapter
 import com.app.koltinpoc.viewModel.OfflineViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,16 +32,16 @@ class OffLineFragment : Fragment(R.layout.fragment_offline) {
         viewModel.article.observe(viewLifecycleOwner) { dataHandler ->
             when (dataHandler) {
                 is DataHandler.SUCCESS -> {
-                    LogData("onViewCreated: SUCCESS  ${dataHandler.data?.get(0)?.title} ")
+                    logData("onViewCreated: SUCCESS  ${dataHandler.data?.get(0)?.title} ")
                     newsAdapter.differ.submitList(dataHandler.data)
                 }
 
                 is DataHandler.ERROR -> {
-                    LogData("onViewCreated: ERROR ${dataHandler.message}")
+                    logData("onViewCreated: ERROR ${dataHandler.message}")
                 }
 
                 is DataHandler.LOADING -> {
-                    LogData("onViewCreated: LOADING")
+                    logData("onViewCreated: LOADING")
                 }
             }
         }

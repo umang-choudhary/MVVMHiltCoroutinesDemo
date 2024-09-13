@@ -11,7 +11,7 @@ import com.app.koltinpoc.db.entity.ArticleEntity
     entities = [ArticleEntity::class],
 )
 @TypeConverters(Converter::class)
-abstract class AppDatabase :RoomDatabase(){
+abstract class AppDatabase : RoomDatabase() {
 
     abstract fun articleDao(): ArticleDao
 }

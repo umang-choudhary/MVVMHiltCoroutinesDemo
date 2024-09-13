@@ -7,7 +7,7 @@ import com.app.koltinpoc.di.Transformer.convertArticleModelToArticleEntity
 import com.app.koltinpoc.model.Article
 import javax.inject.Inject
 
-class DBRepository @Inject constructor(val appDatabase: AppDatabase) {
+class DBRepository @Inject constructor(private val appDatabase: AppDatabase) {
 
     suspend fun insertArticle(article: Article): Long {
         return appDatabase.articleDao()
